@@ -25,6 +25,22 @@ cp /tmp/playbook/templates/DECISIONS.md ./
 | `templates/DECISIONS.md` | 결정과 이유, 검증 기록(사후 설명 준비) |
 | `docs/WORKFLOW.md` | 180분 진행 순서 |
 | `skills/counterexample-review/SKILL.md` | 반례 기반 검증 Skill |
+| `skills/task-workflow/SKILL.md` | 사람+Codex 1개 진행 순서(단계별 할 일·대기 규칙) |
+| `skills/requirements-interview/` | 담당자 인터뷰 Skill과 18개 영역 질문 은행(`references/bank.md`) |
+| `skills/spec-writing/SKILL.md` | SPEC.md 범위·수용 기준 작성 |
+| `skills/review-checklist/SKILL.md` | 검수 결과(SHA·결함 근거·판정)를 REVIEW.md에 기록 |
+| `skills/judgment/SKILL.md` | 막힌 선택·승인을 DECISIONS.md 판단대기에 등록 |
+
+## 스킬 설치
+
+Codex는 `$CODEX_HOME/skills`(CODEX_HOME이 없으면 `~/.codex/skills`)에 있는 스킬을 읽습니다. `skills/`의 폴더를 그 위치로 복사합니다.
+
+```bash
+mkdir -p ~/.codex/skills
+cp -r /tmp/playbook/skills/* ~/.codex/skills/
+```
+
+`task-workflow`·`requirements-interview`·`spec-writing`·`review-checklist`·`judgment`는 FOD-team-org/fod-harness의 스킬을 외부 CLI 없이 쓰도록 옮긴 것입니다. 각 SKILL.md 맨 아래에 원본 경로가 있습니다.
 
 ## 원칙
 
