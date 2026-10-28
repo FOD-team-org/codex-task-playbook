@@ -10,7 +10,7 @@ description: "Answer a read-only investigation request with a cited explanation 
 Investigation requests are read-only. They produce a cited explanation or a recommendation, not a code change.
 
 1. Route through the **how** skill.
-2. Throughput checkpoint stays one line: `throughput checkpoint: n/a, read-only investigation`.
+2. Stay read-only: do not edit project files during the investigation.
 3. Produce the `how`-shaped output (Overview / Key Concepts / How It Works / Where Things Live / Gotchas), or a recommendation with a tradeoffs table if the request is a decision between alternatives.
 
 No code change. If the investigation precedes one, hand back to the user and re-route to the bug-fix skill.
