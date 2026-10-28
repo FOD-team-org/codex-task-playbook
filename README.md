@@ -9,11 +9,12 @@ git clone https://github.com/FOD-team-org/codex-task-playbook.git /tmp/playbook
 cp /tmp/playbook/AGENTS.md ./AGENTS.md          # 작업 폴더 루트에 둔다
 cp /tmp/playbook/templates/REQUIREMENTS.md ./
 cp /tmp/playbook/templates/DECISIONS.md ./
+cp /tmp/playbook/templates/ASSUMPTIONS.md ./
 ```
 
 과제 폴더에 이미 AGENTS.md가 있으면 덮어쓰지 마세요. 기존 파일 아래에 이 내용을 이어 붙입니다. `~/.codex/config.toml` 등 환경이 제공한 설정은 수정하지 않습니다.
 
-중요한 판단은 Codex가 DECISIONS.md `## 판단대기`에 추천안과 함께 올리고, 사람이 답과 이유를 적습니다. 답이 적힌 항목은 `## 판단기록`으로 옮기고 반영 위치를 남깁니다. 품질 검수와 사후 설명은 이 기록을 근거로 합니다.
+REQUIREMENTS.md에 없는 보안·결제·운영 로직처럼 틀리면 서비스에 문제가 생기는 판단만 Codex가 DECISIONS.md `## 판단대기`에 추천안과 함께 올리고, 사람이 답과 이유를 적습니다. 답이 적힌 항목은 `## 판단기록`으로 옮기고 반영 위치를 남깁니다. 그 밖의 판단은 Codex가 정하고 ASSUMPTIONS.md에 이유와 함께 적습니다. 품질 검수와 사후 설명은 두 기록을 근거로 합니다.
 
 ## 구성
 
@@ -24,6 +25,7 @@ cp /tmp/playbook/templates/DECISIONS.md ./
 | `templates/REQUIREMENTS.md` | 담당자 답을 원문 그대로 적는 요구사항 정본 |
 | `templates/BUILD_PROMPT.md` | 빌드 세션 첫 지시 |
 | `templates/VERIFY_PROMPT.md` | 새 세션에서 수정 없이 반례 중심으로 검증하는 지시 |
+| `templates/ASSUMPTIONS.md` | Codex가 직접 정한 판단과 이유, 사람이 고친 표시 |
 | `templates/DECISIONS.md` | 판단대기 → 사람의 답·이유 → 판단기록·반영 위치, 검증 채택/기각(사후 설명 준비) |
 | `docs/WORKFLOW.md` | 180분 진행 순서 |
 | `skills/counterexample-review/SKILL.md` | 반례 기반 검증 Skill |
@@ -31,7 +33,7 @@ cp /tmp/playbook/templates/DECISIONS.md ./
 | `skills/requirements-interview/` | 담당자 인터뷰 Skill과 18개 영역 질문 은행(`references/bank.md`) |
 | `skills/spec-writing/SKILL.md` | SPEC.md 범위·수용 기준 작성 |
 | `skills/review-checklist/SKILL.md` | 검수 결과(SHA·결함 근거·판정)를 REVIEW.md에 기록 |
-| `skills/judgment/SKILL.md` | 막힌 선택·승인을 DECISIONS.md 판단대기에 등록 |
+| `skills/judgment/SKILL.md` | 중요 판단(보안·결제·운영)만 판단대기에 등록, 나머지는 ASSUMPTIONS.md |
 | `skills/in-your-own-words/SKILL.md` | 사용자의 목표와 풀려는 문제를 내 말로 다시 적기 |
 | `skills/sharpen/SKILL.md` | 과제를 더 크게가 아니라 더 깊게 다시 쓰기 |
 | `skills/tdd/SKILL.md` | 싼 테스트 경로가 있는 버그를 실패 테스트 먼저 쓰고 고치기 |
