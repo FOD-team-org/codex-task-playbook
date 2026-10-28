@@ -5,4 +5,4 @@ description: "Restate in your own words what you think the user's goals are and 
 
 Restate in your own words what you think the user's goals are and what problem they're trying to solve.
 
-From pstack pstack/skills/in-your-own-words/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified
+From pstack pstack/skills/in-your-own-words/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified except for removing the disable-model-invocation frontmatter key

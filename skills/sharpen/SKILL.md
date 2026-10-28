@@ -14,4 +14,4 @@ Then rewrite my prompt to ask for exactly that.
 
 Leave choices that are mine to make open instead of deciding them.
 
-From pstack pstack/skills/sharpen/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified
+From pstack pstack/skills/sharpen/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified except for removing the disable-model-invocation frontmatter key

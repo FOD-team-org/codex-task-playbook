@@ -40,4 +40,4 @@ Report the evidence, not just the outcome:
 - Name the passing-after test run and any nearby validation performed.
 - If failing-before evidence could not be demonstrated, state why and describe the closest regression check used instead.
 
-From pstack pstack/skills/tdd/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified
+From pstack pstack/skills/tdd/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified except for removing the disable-model-invocation frontmatter key
