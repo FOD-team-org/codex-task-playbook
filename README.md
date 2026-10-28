@@ -11,7 +11,9 @@ cp /tmp/playbook/templates/REQUIREMENTS.md ./
 cp /tmp/playbook/templates/DECISIONS.md ./
 ```
 
-과제 폴더에 이미 AGENTS.md가 있으면 덮어쓰지 마세요. 기존 파일 아래에 이 내용을 이어 붙입니다.
+과제 폴더에 이미 AGENTS.md가 있으면 덮어쓰지 마세요. 기존 파일 아래에 이 내용을 이어 붙입니다. `~/.codex/config.toml` 등 환경이 제공한 설정은 수정하지 않습니다.
+
+중요한 판단은 Codex가 DECISIONS.md `## 판단대기`에 추천안과 함께 올리고, 사람이 답과 이유를 적습니다. 답이 적힌 항목은 `## 판단기록`으로 옮기고 반영 위치를 남깁니다. 품질 검수와 사후 설명은 이 기록을 근거로 합니다.
 
 ## 구성
 
@@ -22,7 +24,7 @@ cp /tmp/playbook/templates/DECISIONS.md ./
 | `templates/REQUIREMENTS.md` | 담당자 답을 원문 그대로 적는 요구사항 정본 |
 | `templates/BUILD_PROMPT.md` | 빌드 세션 첫 지시 |
 | `templates/VERIFY_PROMPT.md` | 새 세션에서 수정 없이 반례 중심으로 검증하는 지시 |
-| `templates/DECISIONS.md` | 결정과 이유, 검증 기록(사후 설명 준비) |
+| `templates/DECISIONS.md` | 판단대기 → 사람의 답·이유 → 판단기록·반영 위치, 검증 채택/기각(사후 설명 준비) |
 | `docs/WORKFLOW.md` | 180분 진행 순서 |
 | `skills/counterexample-review/SKILL.md` | 반례 기반 검증 Skill |
 | `skills/task-workflow/SKILL.md` | 사람+Codex 1개 진행 순서(단계별 할 일·대기 규칙) |
