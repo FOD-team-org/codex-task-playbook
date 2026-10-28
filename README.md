@@ -5,7 +5,7 @@
 ## 쓰는 법
 
 ```bash
-git clone https://github.com/kms970/codex-task-playbook.git /tmp/playbook
+git clone https://github.com/FOD-team-org/codex-task-playbook.git /tmp/playbook
 cp /tmp/playbook/AGENTS.md ./AGENTS.md          # 작업 폴더 루트에 둔다
 cp /tmp/playbook/templates/REQUIREMENTS.md ./
 cp /tmp/playbook/templates/DECISIONS.md ./
@@ -30,6 +30,16 @@ cp /tmp/playbook/templates/DECISIONS.md ./
 | `skills/spec-writing/SKILL.md` | SPEC.md 범위·수용 기준 작성 |
 | `skills/review-checklist/SKILL.md` | 검수 결과(SHA·결함 근거·판정)를 REVIEW.md에 기록 |
 | `skills/judgment/SKILL.md` | 막힌 선택·승인을 DECISIONS.md 판단대기에 등록 |
+| `skills/in-your-own-words/SKILL.md` | 사용자의 목표와 풀려는 문제를 내 말로 다시 적기 |
+| `skills/sharpen/SKILL.md` | 과제를 더 크게가 아니라 더 깊게 다시 쓰기 |
+| `skills/tdd/SKILL.md` | 싼 테스트 경로가 있는 버그를 실패 테스트 먼저 쓰고 고치기 |
+| `skills/blast-radius/SKILL.md` | 변경이 다른 곳에서 깨뜨릴 것을 찾고, 안전 근거 하나를 실행으로 증명 |
+| `skills/bro/SKILL.md` | 직전 답을 전문용어 없이 쉬운 말로 다시 말하기 |
+| `skills/how/` | "X는 어떻게 동작하나" 코드 구조 설명(탐색·설명 틀 `references/`) |
+| `skills/investigation/SKILL.md` | 코드 변경 없는 조사: 근거를 단 설명이나 추천 |
+| `skills/bug-fix/SKILL.md` | 직접 재현 → 원인 이분 탐색 → 최소 수정 → 같은 경로로 검증 |
+| `skills/prototype/SKILL.md` | 설계 결정 하나를 위한 버리는 시제품과 변형 비교 |
+| `skills/engineering-principles/SKILL.md` | 최소 diff·먼저 빼기·실물 검증·근본 원인 등 작업 원칙 8개 묶음 |
 
 ## 스킬 설치
 
@@ -47,3 +57,8 @@ cp -r /tmp/playbook/skills/* ~/.codex/skills/
 - 모델 하나로 진행합니다. 빌드 세션 1개와 검증 세션 1~2개만 씁니다.
 - AI 검증의 지적은 반례 행을 사람이 직접 확인한 뒤 채택합니다.
 - 화면 확인과 손 계산 표본 대조는 사람이 합니다.
+
+## 출처
+
+- `task-workflow`·`requirements-interview`·`spec-writing`·`review-checklist`·`judgment`: FOD-team-org/fod-harness
+- `in-your-own-words`·`sharpen`·`tdd`·`blast-radius`·`bro`·`how`·`investigation`·`bug-fix`·`prototype`·`engineering-principles`: pstack(MIT, Copyright (c) 2026 Lauren Tan, https://github.com/cursor/plugins/tree/main/pstack). 이식 목록과 라이선스 전문은 `NOTICE.md`에 있습니다.
