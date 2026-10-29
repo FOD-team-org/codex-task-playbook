@@ -86,7 +86,7 @@ A test is a claim about what the code does for its users: a caller, an end user,
 
 Judge each test against two imagined edits:
 
-- **Break the behavior.** Make the code return a wrong value, skip an effect, or do the effect twice. If the test still passes, it proves nothing. The usual causes are an assertion looser than the contract, an expected value computed by the code under test, a restated constant or prompt string that never runs the code that reads it, and an assertion on data that the test built itself.
+- **Break the behavior.** Make the code return a wrong value, skip an effect, or do the effect twice. If the test still passes, it proves nothing. The usual causes are an assertion looser than the contract, an expected value computed by the code under test, a restated constant or prompt string that never runs the code that reads it, and an assertion on data that the test built itself. Do this for real once before claiming done: the mutation-check skill gives the steps.
 - **Change the internals.** Keep every observable result the same and restructure the code underneath. If the test now fails, it is pinned to the implementation. It will need a rewrite on every refactor and still catches no bug.
 
 Keep a test that catches the first edit and survives the second. Rewrite or delete the rest. To write a test that does both, drive the code through its users' interface with a concrete input. Derive the expected value from the requirement, not from a run of the code. Assert what the contract promises, no less and no more.
@@ -107,4 +107,4 @@ Order work as a sequence of small units, each ending in a state you can check, a
 
 The sequencing complement to Prove It Works above, which keeps each check real.
 
-Adapted from pstack pstack/skills/principle-{laziness-protocol,subtract-before-you-add,prove-it-works,fix-root-causes,attack-the-premise,never-block-on-the-human,test-behavior-not-implementation,sequence-verifiable-units}/SKILL.md (MIT, (c) 2026 Lauren Tan): removed per-skill frontmatter, links and references to principles not included here (build-the-lever, redesign-from-first-principles, show-me-your-work); merged into one file with ## headings
+Adapted from pstack pstack/skills/principle-{laziness-protocol,subtract-before-you-add,prove-it-works,fix-root-causes,attack-the-premise,never-block-on-the-human,test-behavior-not-implementation,sequence-verifiable-units}/SKILL.md (MIT, (c) 2026 Lauren Tan): removed per-skill frontmatter, links and references to principles not included here (build-the-lever, redesign-from-first-principles, show-me-your-work); merged into one file with ## headings; added a pointer to mutation-check under Break the behavior

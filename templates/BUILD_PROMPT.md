@@ -2,8 +2,10 @@
 
 ```
 과제 설명은 README.md, 요구사항은 REQUIREMENTS.md, 자료는 data/에 있다.
-REQUIREMENTS.md의 항목을 전부 구현하고, 항목마다 node:test로 API 테스트를 하나 이상 만든다.
+REQUIREMENTS.md의 항목을 전부 구현하고, 항목마다 node:test로 API 테스트를 하나 이상 만든다(http-roundtrip-test 스킬).
+데이터 처리는 data-edge-tests, 고객 데이터를 내보내는 곳은 data-exposure-guard 스킬을 따른다.
 결과 파일은 엑셀에서 바로 열리는 UTF-8 BOM CSV로 내려받게 한다.
+다 만든 뒤 security-check와 mutation-check 스킬을 한 번씩 돌리고 결과를 DECISIONS.md `## 검증`에 적는다.
 실행 방법(설치·시작·테스트 명령)을 README.md 맨 아래에 추가한다.
 AGENTS.md 규칙을 따른다.
 ```

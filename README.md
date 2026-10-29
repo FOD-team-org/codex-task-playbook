@@ -45,6 +45,12 @@ REQUIREMENTS.md에 없는 보안·결제·운영 로직처럼 틀리면 서비�
 | `skills/prototype/SKILL.md` | 설계 결정 하나를 위한 버리는 시제품과 변형 비교 |
 | `skills/engineering-principles/SKILL.md` | 최소 diff·먼저 빼기·실물 검증·근본 원인 등 작업 원칙 8개 묶음 |
 | `skills/ui-baseline/SKILL.md` | 화면 기준선(0단계 담백 기본)과 사람이 올릴 때의 1단계 정돈·2단계 브랜드 범위 |
+| `skills/security-check/SKILL.md` | 완성 후·검증 때 외부 입력이 닿는 곳(형식·정규식·경로·XSS·오류 노출·인증·개인정보)을 실제 요청으로 점검 |
+| `skills/data-exposure-guard/SKILL.md` | 응답 필드 고르기, 개인정보 가리기, 조회 실패 문구 통일, CSV BOM·따옴표·수식 문자 처리 |
+| `skills/llm-feature-guard/SKILL.md` | LLM 호출 기능이 있을 때만: 프롬프트 구분, 출력 검사, 호출 한도, 가짜 모델 테스트 |
+| `skills/http-roundtrip-test/SKILL.md` | createApp + 빈 포트 + fetch로 하는 node:test 틀과 라우트별 오류 사례 |
+| `skills/data-edge-tests/SKILL.md` | BOM·빈 값·숫자·날짜·정렬·묶기·중복·평균 등 데이터 처리 함정과 테스트 |
+| `skills/mutation-check/SKILL.md` | 핵심 줄을 일부러 틀리게 바꿔 테스트가 잡는지 확인하고 되돌리기 |
 
 ## 스킬 설치
 
@@ -67,3 +73,4 @@ cp -r /tmp/playbook/skills/* ~/.codex/skills/
 
 - `task-workflow`·`requirements-interview`·`spec-writing`·`review-checklist`·`judgment`: FOD-team-org/fod-harness
 - `in-your-own-words`·`sharpen`·`tdd`·`blast-radius`·`bro`·`how`·`investigation`·`bug-fix`·`prototype`·`engineering-principles`: pstack(MIT, Copyright (c) 2026 Lauren Tan, https://github.com/cursor/plugins/tree/main/pstack). 이식 목록과 라이선스 전문은 `NOTICE.md`에 있습니다.
+- `security-check`·`data-exposure-guard`·`llm-feature-guard`·`http-roundtrip-test`·`data-edge-tests`·`mutation-check`: 공개 보안·테스트 자료를 참고해 새로 쓴 것입니다. 참고 목록은 `NOTICE.md`에 있습니다.

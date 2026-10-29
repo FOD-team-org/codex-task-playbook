@@ -8,6 +8,19 @@
 - ibelick/ui-skills `baseline-ui`, `fixing-accessibility` (MIT) — https://github.com/ibelick/ui-skills
 - Community-Access/accessibility-agents `tables-data-specialist` (MIT) — https://github.com/Community-Access/accessibility-agents
 
+## 보안·테스트 스킬 참고 출처
+
+`skills/security-check`, `data-exposure-guard`, `llm-feature-guard`, `http-roundtrip-test`, `data-edge-tests`, `mutation-check`는 아래 공개 자료의 점검 항목과 개념을 참고해 한국어로 새로 쓴 것입니다. 원문 문장, 코드, 목록은 옮기지 않았습니다. JavaScript 동작과 테스트 틀은 Node.js 24.18에서 직접 실행해 확인했습니다.
+
+- openai/skills `security-best-practices` (Apache-2.0) — https://github.com/openai/skills
+- anthropics/claude-plugins-official `security-guidance` (Apache-2.0) — https://github.com/anthropics/claude-plugins-official
+- anthropics/skills `webapp-testing` (Apache-2.0) — https://github.com/anthropics/skills
+- getsentry/skills `find-bugs` (Apache-2.0), `security-review` (CC BY-SA 4.0) — https://github.com/getsentry/skills
+- trailofbits/skills `sharp-edges`, `property-based-testing`, `mutation-testing` (CC BY-SA 4.0) — https://github.com/trailofbits/skills
+- OWASP Cheat Sheet Series(Node.js Security), CSV Injection, ASVS 5.0, Top 10 for LLM Applications 2025 (CC BY-SA 4.0) — https://owasp.org
+- obra/superpowers (MIT) — https://github.com/obra/superpowers
+- tartinerlabs/skills `testing` (MIT) — https://github.com/tartinerlabs/skills
+
 ## pstack
 
 이 저장소의 일부 스킬은 pstack에서 가져와 고쳐 쓴 것입니다.
@@ -22,7 +35,7 @@
 |---|---|---|
 | `skills/in-your-own-words/SKILL.md` | `pstack/skills/in-your-own-words/SKILL.md` | 없음 |
 | `skills/sharpen/SKILL.md` | `pstack/skills/sharpen/SKILL.md` | 없음 |
-| `skills/tdd/SKILL.md` | `pstack/skills/tdd/SKILL.md` | 없음 |
+| `skills/tdd/SKILL.md` | `pstack/skills/tdd/SKILL.md` | 있음 |
 | `skills/bro/SKILL.md` | `pstack/skills/bro/SKILL.md` | 없음 |
 | `skills/blast-radius/SKILL.md` | `pstack/skills/blast-radius/SKILL.md` | 있음 |
 | `skills/how/SKILL.md` | 미러 `skills/how/SKILL.md` | 있음 |

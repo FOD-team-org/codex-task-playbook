@@ -21,4 +21,5 @@
 - 하지 못한 항목은 추정하지 말고 "미완"으로 적는다. 실행한 명령과 결과 수치는 그대로 적는다.
 - 마지막 메시지는 `## 결과` 아래에 쓰고, 미완 항목과 함께 의문·판단 필요 항목도 적는다.
 - requirements-interview 스킬은 사람이 요청할 때만 쓴다. 구현·검증 중에는 멈추지 않는다. REQUIREMENTS.md에 없는 보안·결제·운영 로직(틀리면 서비스에 문제가 생기는 것)만 judgment 스킬로 DECISIONS.md 판단대기에 추천안과 함께 올리고, 추천안을 가정으로 삼아 계속 진행한다. 사람이 적은 답이 가정보다 우선하며, 판단기록의 답을 반영할 때는 그 항목만 고친다. 그 밖의 판단은 직접 정하고 ASSUMPTIONS.md에 이유와 함께 한 줄씩 적는다.
+- 보안과 테스트: API 테스트는 http-roundtrip-test, 데이터를 읽고 묶고 집계하는 코드는 data-edge-tests, 고객 데이터를 응답·CSV·로그로 내보내는 코드는 data-exposure-guard, LLM 호출 기능은 llm-feature-guard 스킬을 따른다. 완료라고 말하기 전에 security-check와 mutation-check를 한 번씩 돌린다. 요구사항에 없는 보안 장치는 더하지 않는다.
 - 작업을 시작할 때 in-your-own-words 스킬로 목표·문제·예상 최소 변경을 세 줄로 적고, 확인을 기다리지 않고 진행한다.

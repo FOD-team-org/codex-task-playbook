@@ -20,7 +20,7 @@ Do not force a test when it would be impractical. If the available test would re
 
 ## If a Failing Test Is Impractical
 
-Use the closest executable regression check instead: a targeted script, manual reproduction command, browser automation, snapshot comparison, log assertion, or focused integration check.
+Use the closest executable regression check instead: a targeted script, manual reproduction command, HTTP request against a locally started server, snapshot comparison, log assertion, or focused integration check.
 
 Prefer no new test over a bad test. A bad test is one that mostly tests mocks, encodes current implementation details, depends on timing or unrelated global state, needs expensive infrastructure for a small fix, or would be deleted immediately after proving the fix.
 
@@ -40,4 +40,4 @@ Report the evidence, not just the outcome:
 - Name the passing-after test run and any nearby validation performed.
 - If failing-before evidence could not be demonstrated, state why and describe the closest regression check used instead.
 
-From pstack pstack/skills/tdd/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified except for removing the disable-model-invocation frontmatter key
+From pstack pstack/skills/tdd/SKILL.md (MIT, (c) 2026 Lauren Tan), unmodified except for removing the disable-model-invocation frontmatter key and replacing "browser automation" with an HTTP request check (AGENTS.md forbids browser automation)
