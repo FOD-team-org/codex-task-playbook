@@ -8,8 +8,8 @@ description: 사람 한 명과 Codex 하나로 작업을 진행하다 다음 단
 | 단계 | 할 일 |
 |---|---|
 | INTERVIEW | requirements-interview 스킬로 한 영역씩 묻고 답을 REQUIREMENTS.md에 원문 그대로 적는다 |
-| RESEARCH·PRD_DRAFT·ARCH·PLANNING·SPEC | 해당 문서를 작업 폴더에 쓴다. SPEC은 spec-writing 스킬로 SPEC.md에 쓴다 |
-| IMPLEMENT·FIX | SPEC.md대로 직접 구현·수정한다 |
+| RESEARCH·PRD_DRAFT·ARCH·PLANNING·SPEC | 해당 문서를 작업 폴더에 쓴다. 구현 설계(ARCH·PLANNING)는 design-doc 스킬로 DESIGN.md에, 수정 범위는 spec-writing 스킬로 SPEC.md에 쓴다 |
+| IMPLEMENT·FIX | DESIGN.md(수정이면 SPEC.md)대로 직접 구현·수정한다. 설계와 달라지면 DESIGN.md를 먼저 고친다 |
 | VERIFY | SPEC.md의 검증 명령을 셸로 실행한다 |
 | REVIEW | review-checklist 스킬로 읽기 전용 검수하고 REVIEW.md에 쓴다 |
 | DOCS | 실제 증거(실행한 명령·결과·커밋)를 DECISIONS.md에 기록한다 |
@@ -20,6 +20,7 @@ description: 사람 한 명과 Codex 하나로 작업을 진행하다 다음 단
 
 검증 명령은 SPEC.md에 적고 셸로 실행한다. 설정 판단은 검증 명령을 찾지 못했거나 사용자 설정 변경이 필요할 때만 요청한다.
 
+원본과 다른 점: ARCH·PLANNING을 design-doc 스킬(DESIGN.md)로 연결했다.
 원본에서 제외한 것: fodh 상태·전이 명령, 인박스 확인, 위임 대기(runId), 두뇌/수행자 분리와 위임, MERGE(워크트리 병합), recovering(원장 조회), 오토파일럿, 검증 프리셋 자동 감지.
 
 출처: FOD-team-org/fod-harness skills/fodh-workflow/SKILL.md (원작자 동일, 외부 CLI 의존 제거)
