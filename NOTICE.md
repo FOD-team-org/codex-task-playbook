@@ -1,5 +1,15 @@
 # NOTICE
 
+## ui-baseline 참고 출처
+
+`skills/ui-baseline/SKILL.md`는 아래 공개 규칙을 참고해 한국어로 새로 쓴 것입니다. 원문 문장은 옮기지 않았습니다.
+
+- vercel-labs/web-interface-guidelines (MIT) — https://github.com/vercel-labs/web-interface-guidelines
+- ibelick/ui-skills `baseline-ui`, `fixing-accessibility` (MIT) — https://github.com/ibelick/ui-skills
+- Community-Access/accessibility-agents `tables-data-specialist` (MIT) — https://github.com/Community-Access/accessibility-agents
+
+## pstack
+
 이 저장소의 일부 스킬은 pstack에서 가져와 고쳐 쓴 것입니다.
 
 - 원본: https://github.com/cursor/plugins/tree/main/pstack (커밋 c742dd6)

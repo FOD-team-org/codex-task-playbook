@@ -44,6 +44,7 @@ REQUIREMENTS.md에 없는 보안·결제·운영 로직처럼 틀리면 서비�
 | `skills/bug-fix/SKILL.md` | 직접 재현 → 원인 이분 탐색 → 최소 수정 → 같은 경로로 검증 |
 | `skills/prototype/SKILL.md` | 설계 결정 하나를 위한 버리는 시제품과 변형 비교 |
 | `skills/engineering-principles/SKILL.md` | 최소 diff·먼저 빼기·실물 검증·근본 원인 등 작업 원칙 8개 묶음 |
+| `skills/ui-baseline/SKILL.md` | 화면 기준선(0단계 담백 기본)과 사람이 올릴 때의 1단계 정돈·2단계 브랜드 범위 |
 
 ## 스킬 설치
 
