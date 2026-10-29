@@ -1,21 +1,17 @@
 ---
 name: bug-fix
-description: "Fix a bug scientifically: reproduce it yourself, binary-search the cause with runtime evidence, ship the smallest change the evidence justifies, and verify on the same surface."
+description: 결함을 고칠 때 사용한다. 직접 재현하고, DESIGN.md 고장 지도에서 출발해 원인을 증거로 좁힌 뒤, 증거가 뒷받침하는 가장 작은 수정만 넣고 같은 방법으로 다시 확인한다.
 ---
 
-### Bug fix
+# 결함 수정
 
-**You own this task. Plan, review, verify.** Do the investigation and the fix yourself, sequentially.
+1. 재현: 결함을 직접 재현한다. 서버면 HTTP 요청, 함수면 node:test로 한다. 재현되지 않으면 조건을 좁히거나 로그를 넣어 다시 해 보고, 그래도 안 되면 '재현 안 됨'으로 보고한다.
+2. 원인 찾기: DESIGN.md 고장 지도에서 그 증상의 줄부터 본다. 흐름 순서(입력 검사 → 데이터 읽기·묶기 → 계산 → 출력)대로 중간 값을 찍어, 값이 처음 틀어지는 함수를 찾는다. 짐작으로 고치지 않는다. 원인이 지도에 없던 곳이면 그 줄을 더한다.
+3. 실패 테스트 먼저: 결함을 드러내는 테스트를 싸게 만들 수 있으면 먼저 쓰고, 고치기 전에 실패하는 것을 본다. 기대값은 요구사항과 손 계산에서 정한다.
+4. 수정: 증상이 보인 곳이 아니라 처음 틀어진 곳을 고친다. 같은 원인이 있는 다른 위치도 함께 고친다. "도움이 될지도 모르는" 방어 코드는 넣지 않는다.
+5. 확인: 1번의 재현과 3번의 테스트가 통과하는지 보고, 전체 테스트를 다시 돌린다.
+6. 같은 전제로 고친 것이 두 번 실패하면, 세 번째 수정 전에 그 전제를 한 문장으로 적고 맞는지부터 확인한다.
 
-Be scientific. Every shipped line traces to runtime evidence. Belt-and-suspenders that "might help" is a hypothesis, not a fix. It does not ship. When evidence refutes a hypothesis, revert what it motivated. The smallest change the evidence justifies ships, nothing more.
+보고: 무엇이 틀렸나, 원인 위치(파일:함수), 고친 내용, 고치기 전 실패 출력과 고친 뒤 통과 출력.
 
-1. Reproduce it yourself on the matching surface, even when a debug or instrumentation protocol says to ask the user to reproduce. Ask the user only with a stated, specific reason the control surface cannot reach the target, and only after driving it as far as it goes. If it won't reproduce directly, synthesize the trigger, tighten conditions, or instrument until it fires.
-2. Binary-search the cause. Form the candidate hypotheses, then rule them out until one survives. Seed them with `how` over the affected subsystem and `git log` for regression history. Each pass, take the split that cuts the most remaining problem space, get runtime evidence, eliminate. When program state is unclear, add instrumentation or logging and read it as the code runs. Don't guess. Confirm the surviving *mechanism* with runtime evidence before step 3.
-3. Plan the fix. Implement it yourself with a specific scope.
-4. Verify on the same surface. The original repro now passes. "Inconclusive" or wrong-surface is not a pass. Flag it. Unit tests show branch behavior, not bug absence.
-5. Keep the failing repro (test or script) next to the fix and do not run git commands; the human commits. See the **tdd** skill for the failing-test-first cadence when the bug has a cheap local test path. Skip it when the test would be expensive, integration-heavy, or unclear.
-   This is the canonical **sequence-verifiable-units** principle (engineering-principles skill), the failing test first and the fix on top.
-
-**Reply:** what was broken, root cause, fix, how you verified. Paste failing-then-passing repro output verbatim.
-
-Adapted from pstack pstack/skills/poteto-mode/playbooks/bug-fix.md (MIT, (c) 2026 Lauren Tan): removed subagent delegation (you implement the fix yourself), the model slug, the control skill, why, architect and interrogate references, Cursor's /loop and the Opening a PR step; added frontmatter
+출처: pstack poteto-mode/playbooks/bug-fix.md, skills/tdd, principle-fix-root-causes·principle-attack-the-premise(MIT, (c) 2026 Lauren Tan)를 한국어로 줄여 다시 쓰고 DESIGN.md 고장 지도와 연결했다.

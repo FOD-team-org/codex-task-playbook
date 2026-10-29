@@ -33,18 +33,11 @@
 
 | 새 경로 | 원본 경로 | 수정 |
 |---|---|---|
-| `skills/in-your-own-words/SKILL.md` | `pstack/skills/in-your-own-words/SKILL.md` | 없음 |
-| `skills/sharpen/SKILL.md` | `pstack/skills/sharpen/SKILL.md` | 없음 |
-| `skills/tdd/SKILL.md` | `pstack/skills/tdd/SKILL.md` | 있음 |
 | `skills/bro/SKILL.md` | `pstack/skills/bro/SKILL.md` | 없음 |
-| `skills/blast-radius/SKILL.md` | `pstack/skills/blast-radius/SKILL.md` | 있음 |
 | `skills/how/SKILL.md` | 미러 `skills/how/SKILL.md` | 있음 |
 | `skills/how/references/explorer-prompt.md` | 미러 `skills/how/references/explorer-prompt.md` | 있음 |
 | `skills/how/references/explainer-prompt.md` | 미러 `skills/how/references/explainer-prompt.md` | 있음 |
-| `skills/investigation/SKILL.md` | `pstack/skills/poteto-mode/playbooks/investigation.md` | 있음 |
-| `skills/bug-fix/SKILL.md` | `pstack/skills/poteto-mode/playbooks/bug-fix.md` | 있음 |
-| `skills/prototype/SKILL.md` | `pstack/skills/poteto-mode/playbooks/prototype.md` | 있음 |
-| `skills/engineering-principles/SKILL.md` | `pstack/skills/principle-{laziness-protocol,subtract-before-you-add,prove-it-works,fix-root-causes,attack-the-premise,never-block-on-the-human,test-behavior-not-implementation,sequence-verifiable-units}/SKILL.md` | 있음 |
+| `skills/bug-fix/SKILL.md` | `pstack/skills/poteto-mode/playbooks/bug-fix.md`, `pstack/skills/tdd/SKILL.md`, `pstack/skills/principle-{fix-root-causes,attack-the-premise}/SKILL.md` | 한국어로 줄여 다시 씀 |
 
 각 파일 맨 아래 줄에 원본 경로와 바꾼 내용을 적었습니다.
 
