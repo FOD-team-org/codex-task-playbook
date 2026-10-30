@@ -53,6 +53,60 @@ cp -r /tmp/playbook/skills/* ~/.codex/skills/
 
 Codex 세션을 열기 전에 설치하고, `ls ~/.codex/skills`(또는 `ls "$CODEX_HOME/skills"`)로 폴더 13개가 있는지 확인합니다. 스킬은 AGENTS.md와 빌드 지시에 이름이 적혀 있어 따로 부르지 않아도 읽힙니다. `bug-fix`·`counterexample-review`는 수정·검증 지시 양식에, `how`·`bro`는 사람이 필요할 때 이름을 넣어 부릅니다.
 
+## AI용 설치 절차
+
+Codex에게 설치를 맡길 때는 이렇게 지시합니다. 사람이 위 명령을 직접 치면 토큰이 들지 않습니다.
+
+```
+git clone --depth 1 https://github.com/FOD-team-org/codex-task-playbook.git /tmp/playbook 을 실행하고, /tmp/playbook/README.md의 "AI용 설치 절차"대로 설치해.
+```
+
+Codex는 아래 순서를 따른다.
+
+1. 과제 폴더 루트(지금 작업 폴더)에서 아래 스크립트를 한 번 실행한다. bash 기준이다.
+2. 명령이 샌드박스·승인·네트워크 때문에 막히면 설정을 바꾸거나 우회하지 않는다. 멈추고, 사람이 터미널에 직접 붙여 넣을 수 있게 이 스크립트를 그대로 보여 준다.
+3. 덮어쓰지 않는다. 같은 이름의 스킬 폴더와 기존 템플릿 파일은 건너뛰고, 기존 AGENTS.md에는 뒤에 이어 붙인다.
+4. `~/.codex/config.toml`, 샌드박스·승인 설정, 과제 파일은 건드리지 않는다. 패키지 설치, git commit·push도 하지 않는다.
+5. 실행 결과를 아래 형식으로 보고하고 멈춘다. 빌드는 시작하지 않는다.
+
+```bash
+set -e
+PB=/tmp/playbook
+if [ -d "$PB/.git" ]; then git -C "$PB" pull -q; else git clone -q --depth 1 https://github.com/FOD-team-org/codex-task-playbook.git "$PB"; fi
+SK="${CODEX_HOME:-$HOME/.codex}/skills"
+mkdir -p "$SK"
+for d in "$PB"/skills/*/; do
+  n=$(basename "$d")
+  if [ -e "$SK/$n" ]; then echo "skill skip: $n"; else cp -r "$d" "$SK/$n"; fi
+done
+if [ ! -f AGENTS.md ]; then
+  cp "$PB/AGENTS.md" AGENTS.md; echo "AGENTS.md: created"
+elif grep -q 'codex-task-playbook' AGENTS.md; then
+  echo "AGENTS.md: already appended"
+else
+  printf '\n\n<!-- codex-task-playbook -->\n' >> AGENTS.md
+  cat "$PB/AGENTS.md" >> AGENTS.md; echo "AGENTS.md: appended"
+fi
+for f in REQUIREMENTS DECISIONS ASSUMPTIONS; do
+  if [ -e "$f.md" ]; then echo "template skip: $f.md"; else cp "$PB/templates/$f.md" .; echo "template copied: $f.md"; fi
+done
+echo "skills dir: $SK"
+echo "skills installed: $(for d in "$PB"/skills/*/; do [ -f "$SK/$(basename "$d")/SKILL.md" ] && echo x; done | wc -l)/13"
+```
+
+보고 형식:
+
+```
+## 설치 결과
+- 스킬: N/13 (위치: ...), 건너뛴 폴더: 없음 또는 이름
+- AGENTS.md: 새로 만듦 / 이어 붙임 / 이미 있음
+- 템플릿: 복사한 파일, 건너뛴 파일
+- 막힌 명령: 없음 또는 명령과 오류 한 줄
+- 다음: Codex를 종료하고 다시 켜야 스킬과 AGENTS.md가 읽힙니다.
+```
+
+빌드 지시는 `/tmp/playbook/templates/BUILD_PROMPT.md`, 질문 목록은 `INTERVIEW.md`, 검증 지시는 `VERIFY_PROMPT.md`에서 복사해 씁니다.
+
 각 SKILL.md 맨 아래에 출처가 있습니다.
 
 ## 원칙
