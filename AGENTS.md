@@ -8,9 +8,9 @@
 - 질문하지 말고 끝까지 진행한다. 지시가 멈추라고 할 때만 멈춘다.
 - 요구사항의 정본은 REQUIREMENTS.md다. 거기 없는 기능은 만들지 않는다.
 - 화면은 요구된 동작만 담는다. 표 하나와 버튼 몇 개로 충분하며, 디자인 꾸밈(히어로 문구, 숫자 카드, 차트, 애니메이션)은 하지 않는다.
-- 코드를 쓰기 전에 design-doc 스킬로 DESIGN.md를 쓴다. 구현이 설계와 달라지면 DESIGN.md를 먼저 고친다. 오류는 DESIGN.md 고장 지도에서 출발해 찾는다.
+- 코드를 쓰기 전에 design-doc 스킬로 DESIGN.md를 쓴다. 구현이 설계와 달라진 점은 끝내기 전에 DESIGN.md에 한 번에 맞춘다. 오류는 DESIGN.md 고장 지도에서 출발해 찾는다.
 - REQUIREMENTS.md에 없는 보안·결제·운영 로직만 judgment 스킬로 DECISIONS.md 판단대기에 올리고, 추천안으로 계속 진행한다. 그 밖의 판단은 직접 정해 ASSUMPTIONS.md에 한 줄씩 적는다.
-- 구현 → 실행 → 확인 → 수정을 이어서 한다. 끝나면 띄운 서버를 종료한다.
+- 구현 → 실행 → 확인 → 수정을 이어서 한다. 확인은 서버 띄우기·요청·종료를 한 명령으로 묶어 돌린다. 끝나면 띄운 서버를 종료한다.
 
 ## 스택 (과제가 정하지 않았을 때)
 - Node.js + Express. 화면은 Express가 주는 정적 HTML/JS 한 장이고 ui-baseline 스킬을 따른다.
@@ -22,6 +22,7 @@
 - 완료라고 말하기 전에 security-check와 mutation-check를 한 번씩 돌린다. 요구사항에 없는 보안 장치와, 혹시 몰라 넣는 방어 코드(재시도·응답 순서 보정 같은 것)는 더하지 않는다.
 - 데이터 파일은 전체를 출력하지 않는다. 컬럼명과 앞 5줄을 보고, 더 알아야 하면 스크립트로 개수만 센다.
 - 브라우저 자동화(Playwright·puppeteer·Selenium·headless Chrome)는 설치하지도 실행하지도 않는다. 확인은 HTTP 요청과 node:test로 하고, 화면은 사람이 본다.
+- 파일은 apply_patch로 쓴다. 셸 리다이렉트·here-string으로 한글 파일을 쓰지 않는다. Windows PowerShell에서 파일(SKILL.md 포함)을 읽을 때는 `Get-Content -Encoding UTF8`을 쓴다.
 
 ## 범위
 - 파일은 작업 폴더 안에서만 바꾼다.

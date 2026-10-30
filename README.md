@@ -51,6 +51,8 @@ mkdir -p ~/.codex/skills
 cp -r /tmp/playbook/skills/* ~/.codex/skills/
 ```
 
+Codex 세션을 열기 전에 설치하고, `ls ~/.codex/skills`(또는 `ls "$CODEX_HOME/skills"`)로 폴더 13개가 있는지 확인합니다. 스킬은 AGENTS.md와 빌드 지시에 이름이 적혀 있어 따로 부르지 않아도 읽힙니다. `bug-fix`·`counterexample-review`는 수정·검증 지시 양식에, `how`·`bro`는 사람이 필요할 때 이름을 넣어 부릅니다.
+
 각 SKILL.md 맨 아래에 출처가 있습니다.
 
 ## 원칙
