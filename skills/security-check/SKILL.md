@@ -15,7 +15,8 @@ description: Express 웹 서비스를 다 만든 뒤, 또는 검증할 때 사�
 - 형식: query 값이 늘 문자열이라고 가정하는 곳. `?q=a&q=b`는 배열로 들어온다(Express 4는 `?q[x]=1`도 객체로 만든다). 문자열이 아니면 400을 준다.
 - 정규식: 사용자 값이 `new RegExp(`에 들어가는 곳. `?q=(`를 보내면 SyntaxError로 500이 난다. 검색은 정규화한 문자열의 includes로 한다. 정규식이 꼭 필요하면 이스케이프하고, 실패하면 400을 준다.
 - 경로 이탈: 사용자 값이 path.join, path.resolve, readFile, sendFile에 들어가는 곳. `../`, `..%2f`, 절대 경로를 보내 본다. 허용하는 파일 이름 목록으로 고르는 것이 가장 낫다. 그게 안 되면 path.resolve 결과가 허용 폴더 안인지 확인하고, 밖이면 404를 준다.
-- 화면 XSS: public의 .js 파일과 .html 안 스크립트에서 innerHTML, outerHTML, insertAdjacentHTML, document.write에 데이터 값이 들어가는 곳. 데이터 셀에 `<img src=x onerror=alert(1)>`가 있다고 생각하고 따라간다. textContent와 createElement로 바꾼다. 서버가 템플릿 문자열로 HTML을 조립해 res.send하는 곳도 같은 문제다.
+- 화면 XSS: frontend의 .js 파일과 .html 안 스크립트에서 innerHTML, outerHTML, insertAdjacentHTML, document.write에 데이터 값이 들어가는 곳. 데이터 셀에 `<img src=x onerror=alert(1)>`가 있다고 생각하고 따라간다. textContent와 createElement로 바꾼다. 서버가 템플릿 문자열로 HTML을 조립해 res.send하는 곳도 같은 문제다.
+- SQL 주입: 요청 값이 SQL 문자열에 이어 붙지 않고 자리표시자(`$1`, `$2` …)로만 들어가는가. 표·열 이름을 끼워 넣는 곳은 코드 안 상수 목록에서만 고르는가.
 - 오류 노출: 인자 4개짜리 마지막 오류 처리기가 없는 곳, 또는 응답에 err.stack이나 err.message를 넣는 곳. Express 기본 처리기는 NODE_ENV가 production이 아니면 스택을 보낸다. 깨진 JSON 본문으로 POST해 본다. 응답은 고정 문구와 상태 코드만 보내고, 깨진 JSON에는 400을 준다.
 - 인증: 관리자 경로와 전체 데이터 경로의 비교문. 헤더 없음, 빈 값, 비밀값 환경 변수가 없는 상태로 각각 요청해 본다. `req.headers[...] !== process.env.X`는 둘 다 없으면 통과한다. 비밀값이 설정되지 않았으면 경로를 닫는다(요구사항이 정한 응답, 없으면 404). 비교는 crypto.timingSafeEqual로 한다. 길이가 다르면 예외가 나므로 양쪽을 sha256 해시로 바꾼 뒤 비교한다.
 - 입력 범위: 상태 값, 정렬 기준, 개수 같은 입력을 서버에서 허용 목록과 범위로 검사하는지 본다. 본문을 통째로 저장하거나 Object.assign으로 합치지 않고, 허용된 필드만 꺼낸다.

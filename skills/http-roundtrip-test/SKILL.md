@@ -5,7 +5,7 @@ description: Express 앱의 API 테스트를 만들 때 사용한다. 서버를 
 
 # HTTP 왕복 테스트
 
-1. 앱 파일(예: server.js)은 app을 만드는 함수를 내보내고, 직접 실행될 때만 listen한다.
+1. 앱 파일(예: backend/server.js)은 app을 만드는 함수를 내보내고, 직접 실행될 때만 listen한다.
 ```js
 const express = require('express');
 function createApp(options = {}) {

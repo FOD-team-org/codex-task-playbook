@@ -7,12 +7,13 @@
 ```bash
 git clone https://github.com/FOD-team-org/codex-task-playbook.git /tmp/playbook
 cp /tmp/playbook/AGENTS.md ./AGENTS.md          # 작업 폴더 루트에 둔다
-cp /tmp/playbook/templates/REQUIREMENTS.md ./
 cp /tmp/playbook/templates/DECISIONS.md ./
 cp /tmp/playbook/templates/ASSUMPTIONS.md ./
 ```
 
 과제 폴더에 이미 AGENTS.md가 있으면 덮어쓰지 마세요. 기존 파일 아래에 이 내용을 이어 붙입니다. `~/.codex/config.toml` 등 환경이 제공한 설정은 수정하지 않습니다.
+
+REQUIREMENTS.md는 설치할 때 복사하지 않습니다. 담당자 인터뷰를 시작할 때 `cp /tmp/playbook/templates/REQUIREMENTS.md ./`로 복사해 답을 채웁니다. 파일이 없으면 Codex는 과제 파일을 요구사항 정본으로 씁니다.
 
 REQUIREMENTS.md에 없는 보안·결제·운영 로직처럼 틀리면 서비스에 문제가 생기는 판단만 Codex가 DECISIONS.md `## 판단대기`에 추천안과 함께 올리고, 사람이 답과 이유를 적습니다. 답이 적힌 항목은 `## 판단기록`으로 옮기고 반영 위치를 남깁니다. 그 밖의 판단은 Codex가 정하고 ASSUMPTIONS.md에 이유와 함께 적습니다. 품질 검수와 사후 설명은 두 기록을 근거로 합니다.
 
@@ -20,7 +21,7 @@ REQUIREMENTS.md에 없는 보안·결제·운영 로직처럼 틀리면 서비�
 
 | 파일 | 용도 |
 |---|---|
-| `AGENTS.md` | Codex 작업 규칙(우선순위, 과제가 정한 스택 우선, 설계 먼저, 최소 구현, 브라우저 자동화 금지, 마지막 보고 형식) |
+| `AGENTS.md` | Codex 작업 규칙(우선순위, 과제가 정한 스택 우선, 화면·서버·DB 분리, PostgreSQL·마이그레이션, Docker 배포 파일, 설계 먼저, 최소 구현, 브라우저 자동화 금지, 마지막 보고 형식) |
 | `templates/INTERVIEW.md` | 담당자에게 한 주제씩 물을 질문 목록 |
 | `templates/REQUIREMENTS.md` | 담당자 답을 원문 그대로 적는 요구사항 정본, 만들지 않는 것, 아직 못 물은 것 |
 | `templates/BUILD_PROMPT.md` | 빌드 지시: 1단계 설계(DESIGN.md만 쓰고 멈춤), 2단계 구현, 요구 추가·수정·판단 반영 |
@@ -87,7 +88,7 @@ else
   printf '\n\n<!-- codex-task-playbook -->\n' >> AGENTS.md
   cat "$PB/AGENTS.md" >> AGENTS.md; echo "AGENTS.md: appended"
 fi
-for f in REQUIREMENTS DECISIONS ASSUMPTIONS; do
+for f in DECISIONS ASSUMPTIONS; do
   if [ -e "$f.md" ]; then echo "template skip: $f.md"; else cp "$PB/templates/$f.md" .; echo "template copied: $f.md"; fi
 done
 echo "skills dir: $SK"

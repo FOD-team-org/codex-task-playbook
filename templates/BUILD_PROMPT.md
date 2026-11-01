@@ -10,14 +10,14 @@ design-doc 스킬로 DESIGN.md만 쓰고 멈춰라. 코드는 아직 쓰지 않�
 REQUIREMENTS.md에 없는 보안·결제·운영 판단이 보이면 judgment 스킬로 DECISIONS.md 판단대기에 올려라.
 ```
 
-받은 뒤 DESIGN.md를 2~3분 읽습니다. 흐름, 요구사항 표(R이 빠짐없이 있는지), 고장 지도를 봅니다. 이상한 곳이 있으면 아래 2단계 지시의 `바꿀 점`에 적습니다.
+받은 뒤 DESIGN.md를 2~3분 읽습니다. 흐름, 요구사항 표(R과 화면 조건이 빠짐없이 있는지), 파일 지도(화면·서버·DB가 나뉘었나), 계산 방법의 우선순위, 고장 지도를 봅니다. 이상한 곳이 있으면 아래 2단계 지시의 `바꿀 점`에 적습니다.
 
 ## 2단계: 구현 (같은 세션)
 
 ```
 DESIGN.md대로 구현하라. 바꿀 점: (없으면 "없음")
-REQUIREMENTS.md의 R마다 API 테스트를 하나 이상 만든다.
-다 만든 뒤 security-check와 mutation-check 결과를 DECISIONS.md `## 검증`에 적고, DESIGN.md를 실제 코드와 대조해 맞춘다.
+REQUIREMENTS.md의 R마다, 그리고 화면에서 바꾸는 조건마다 API 테스트를 하나 이상 만든다.
+다 만든 뒤 결과 점검 수치와 security-check·mutation-check 결과를 DECISIONS.md `## 검증`에 적고, DESIGN.md를 실제 코드와 대조해 맞춘 뒤 `## 설명 노트`를 쓴다.
 실행 방법(설치·시작·테스트 명령)을 README.md 맨 아래에 추가한다.
 ```
 
