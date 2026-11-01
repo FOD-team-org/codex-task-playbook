@@ -45,7 +45,7 @@ REQUIREMENTS.md에 없는 보안·결제·운영 로직처럼 틀리면 서비�
 
 ## 스킬 설치
 
-Codex는 `$CODEX_HOME/skills`(CODEX_HOME이 없으면 `~/.codex/skills`)에 있는 스킬을 읽습니다. `skills/`의 폴더를 그 위치로 복사합니다.
+Codex는 `$CODEX_HOME/skills`(CODEX_HOME이 없으면 `~/.codex/skills`)에 있는 스킬을 읽습니다. `skills/`의 폴더를 그 위치로 복사합니다. `~/.codex/skills`에 쓸 수 없으면 작업 폴더의 `.agents/skills`에 복사합니다.
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -75,7 +75,7 @@ set -e
 PB=/tmp/playbook
 if [ -d "$PB/.git" ]; then git -C "$PB" pull -q; else git clone -q --depth 1 https://github.com/FOD-team-org/codex-task-playbook.git "$PB"; fi
 SK="${CODEX_HOME:-$HOME/.codex}/skills"
-mkdir -p "$SK"
+if ! mkdir -p "$SK" 2>/dev/null || [ ! -w "$SK" ]; then SK="$PWD/.agents/skills"; mkdir -p "$SK"; fi
 for d in "$PB"/skills/*/; do
   n=$(basename "$d")
   if [ -e "$SK/$n" ]; then echo "skill skip: $n"; else cp -r "$d" "$SK/$n"; fi
@@ -112,7 +112,7 @@ echo "skills installed: $(for d in "$PB"/skills/*/; do [ -f "$SK/$(basename "$d"
 
 ## 원칙
 
-- 모델 하나로 진행합니다. 빌드 세션 1개와 검증 세션 1개만 씁니다.
+- 모델 하나로 진행합니다(측정 조건: gpt-6.1-sol, 추론 강도 medium). 빌드 세션 1개와 검증 세션 1개만 씁니다.
 - AI 검증의 지적은 반례 행을 사람이 직접 확인한 뒤 채택합니다.
 - 화면 확인과 손 계산 표본 대조는 사람이 합니다.
 
