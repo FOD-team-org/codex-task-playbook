@@ -8,13 +8,14 @@
 
 진행 순서와 사람이 볼 곳은 `docs/WORKFLOW.md`에 있습니다. REQUIREMENTS.md는 설치할 때 복사하지 않습니다. 문제 정의 세션에서 담당자 답과 과제 요구사항을 모아 Codex가 만듭니다.
 
-시간이 없으면 템플릿을 채우지 않고 아래 네 줄로 지시해도 됩니다. 과제 파일 이름과 이유만 바꿉니다.
+시간이 없으면 템플릿을 채우지 않고 아래 다섯 줄로 지시해도 됩니다. 과제 파일 이름과 이유만 바꿉니다.
 
 ```
 README.md 과제로 /tmp/playbook/templates/PROBLEM_PROMPT.md 첫 메시지대로 시작해라.
 이 문제로 확정한다. 이유: (내 말로 한 줄)
 (새 세션) /tmp/playbook/templates/BUILD_PROMPT.md 1단계대로 해라.
 2단계대로 구현해라. 바꿀 점: 없음
+(새 세션, 빌드가 끝난 뒤) /tmp/playbook/templates/EXPLAIN_PROMPT.md 대로 정리해라.
 ```
 
 ## 구성
@@ -26,6 +27,7 @@ README.md 과제로 /tmp/playbook/templates/PROBLEM_PROMPT.md 첫 메시지대�
 | `templates/PROBLEM_PROMPT.md` | 문제 정의 세션 지시 |
 | `templates/BUILD_PROMPT.md` | 빌드 지시: 1단계 설계, 2단계 구현, 요구 추가·수정·판단 반영 |
 | `templates/VERIFY_PROMPT.md` | 수정 없이 반례 중심으로 검증하는 지시, 제출 전 연습 |
+| `templates/EXPLAIN_PROMPT.md` | 빌드 후 사람이 직접 설명할 수 있게 채팅으로 정리하는 지시 |
 | `templates/REQUIREMENTS.md` | 담당자 답을 원문 그대로 적는 요구사항 정본 |
 | `templates/ASSUMPTIONS.md` | Codex가 직접 정한 판단과 이유, 사람이 고친 표시 |
 | `templates/DECISIONS.md` | 판단대기 → 사람의 답·이유 → 판단기록, 검증, 문제 기록 |
