@@ -15,7 +15,7 @@ README.md 과제로 /tmp/playbook/templates/PROBLEM_PROMPT.md 첫 메시지대�
 이 문제로 확정한다. 이유: (내 말로 한 줄)
 (새 세션) /tmp/playbook/templates/BUILD_PROMPT.md 1단계대로 해라.
 2단계대로 구현해라. 바꿀 점: 없음
-(새 세션, 빌드가 끝난 뒤) /tmp/playbook/templates/EXPLAIN_PROMPT.md 대로 정리해라.
+(코드를 고친 뒤, 빌드 세션) explain-doc 스킬대로 EXPLAIN.md를 지금 코드에 맞춰 다시 써라.
 ```
 
 ## 구성
@@ -27,12 +27,12 @@ README.md 과제로 /tmp/playbook/templates/PROBLEM_PROMPT.md 첫 메시지대�
 | `templates/PROBLEM_PROMPT.md` | 문제 정의 세션 지시 |
 | `templates/BUILD_PROMPT.md` | 빌드 지시: 1단계 설계, 2단계 구현, 요구 추가·수정·판단 반영 |
 | `templates/VERIFY_PROMPT.md` | 수정 없이 반례 중심으로 검증하는 지시, 제출 전 연습 |
-| `templates/EXPLAIN_PROMPT.md` | 빌드 후 사람이 직접 설명할 수 있게 채팅으로 정리하는 지시 |
 | `templates/REQUIREMENTS.md` | 담당자 답을 원문 그대로 적는 요구사항 정본 |
 | `templates/ASSUMPTIONS.md` | Codex가 직접 정한 판단과 이유, 사람이 고친 표시 |
 | `templates/DECISIONS.md` | 판단대기 → 사람의 답·이유 → 판단기록, 검증, 문제 기록 |
 | `skills/problem-definition/` | 자료를 세어 사실·가설·갈림길을 내고, 질문 하나씩 의논해 PROBLEM.md로 진짜 문제를 확정 |
 | `skills/design-doc/` | 코드보다 먼저 쓰는 DESIGN.md. 끝날 때 코드와 대조 |
+| `skills/explain-doc/` | 빌드 끝에 쓰는 EXPLAIN.md. 사람이 가장 먼저 읽고 설명을 준비하는 문서 |
 | `skills/default-stack/` | 과제가 스택을 정하지 않았을 때의 React·NestJS·PostgreSQL 구조, 빌드 설정, 배포 파일 |
 | `skills/judgment/` | 요구사항에 답이 없는 판단을 판단대기와 ASSUMPTIONS.md로 나누기 |
 | `skills/ui-baseline/` | 화면 기준선과 사람이 올릴 때의 디자인 단계 |
