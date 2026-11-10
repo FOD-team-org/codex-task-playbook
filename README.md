@@ -30,22 +30,38 @@ README.md 과제로 /tmp/playbook/templates/PROBLEM_PROMPT.md 첫 메시지대�
 | `templates/REQUIREMENTS.md` | 담당자 답을 원문 그대로 적는 요구사항 정본 |
 | `templates/ASSUMPTIONS.md` | Codex가 직접 정한 판단과 이유, 사람이 고친 표시 |
 | `templates/DECISIONS.md` | 판단대기 → 사람의 답·이유 → 판단기록, 검증, 문제 기록 |
+| `skills/environment-check/` | 처음 보는 작업 환경에서 코드 전에 실행기·설치·네트워크·포트·DB·docker·자료를 확인하고 DECISIONS.md `## 환경` 표에 기록 |
 | `skills/problem-definition/` | 자료를 세어 사실·가설·갈림길을 내고, 질문 하나씩 의논해 PROBLEM.md로 진짜 문제를 확정 |
 | `skills/design-doc/` | 코드보다 먼저 쓰는 DESIGN.md. 끝날 때 코드와 대조 |
 | `skills/explain-doc/` | 빌드 끝에 쓰는 EXPLAIN.md. 사람이 가장 먼저 읽고 설명을 준비하는 문서 |
 | `skills/default-stack/` | 과제가 스택을 정하지 않았을 때의 React·NestJS·PostgreSQL 구조, 빌드 설정, 배포 파일 |
 | `skills/judgment/` | 요구사항에 답이 없는 판단을 판단대기와 ASSUMPTIONS.md로 나누기 |
-| `skills/ui-baseline/` | 화면 기준선과 사람이 올릴 때의 디자인 단계 |
+| `skills/design-direction/` | 화면 디자인 방향(색·글꼴·밀도·화면 구성 프리셋)이 정해지지 않았을 때 상황에 맞게 고르기 |
+| `skills/ui-baseline/` | 테마와 무관한 화면 기본기 |
 | `skills/http-roundtrip-test/` | createApp + 빈 포트 + fetch로 하는 node:test 틀과 API 경로별 오류 사례 |
-| `skills/data-edge-tests/` | 데이터 처리 함정, 이상 행·빈칸·기록 없는 대상 구분 |
+| `skills/data-edge-tests/` | 원본을 스크립트로 세어 DECISIONS.md `## 자료 점검` 표 채우기, 데이터 처리 함정, 이상 행·빈칸·기록 없는 대상 구분 |
+| `skills/system-integration/` | 이미 있는 외부 API·DB·인증과 붙는 기능 |
 | `skills/data-exposure-guard/` | 응답 필드 고르기, 개인정보 가리기, CSV 처리 |
 | `skills/llm-feature-guard/` | LLM 호출 기능이 있을 때만: 프롬프트 구분, 출력 검사, 호출 한도, 가짜 모델 테스트 |
 | `skills/security-check/` | 외부 입력이 닿는 곳을 실제 요청으로 점검 |
 | `skills/mutation-check/` | 핵심 줄을 일부러 틀리게 바꿔 테스트가 잡는지 확인 |
 | `skills/bug-fix/` | 재현 → 고장 지도에서 원인 좁히기 → 실패 테스트 먼저 → 최소 수정 → 확인 |
 | `skills/counterexample-review/` | 반례 기반 검증 |
+| `skills/deploy-readiness/` | 남이 받아 띄울 서비스를 끝내기 전에 작업 폴더 밖 깨끗한 복사본으로 설치·시작 점검 |
 | `skills/how/` | "X는 어떻게 동작하나" 코드 구조 설명 |
 | `skills/bro/` | 직전 답을 전문용어 없이 쉬운 말로 다시 말하기 |
+
+웹 서비스 과제 밖의 개발 공통 스킬입니다. 해당하는 일이 있을 때만 읽힙니다.
+
+| 파일 | 용도 |
+|---|---|
+| `skills/git-pr-merge-loop/` | 사람이 커밋·push·PR·병합을 상시로 맡긴 저장소에서 기능 하나씩 끝내기 |
+| `skills/multi-repo-workspace/` | 여러 저장소가 한 제품을 이루는 작업 공간, 정본 스냅샷 동기화 |
+| `skills/prod-db-migration/` | 운영 DB 스키마 변경의 DB·코드 순서, 파괴적 구문 점검 |
+| `skills/app-store-release/` | iOS·안드로이드 스토어 제출, 심사 반려 대응, 출시 QA |
+| `skills/flutter-test-pitfalls/` | Flutter 테스트의 전역 상태·대기·비교 함정 |
+
+스킬 안에 이 저장소에 없는 스킬 이름(operating-principles 등)이 나오면 [FOD-skills](https://github.com/FOD-team-org/FOD-skills)에 있는 스킬입니다. 이 저장소의 개발 스킬과 플레이북은 FOD-skills의 `playbooks/codex-dev`·개발 스킬과 같은 내용입니다.
 
 ## 설치
 
@@ -99,7 +115,7 @@ Codex는 다음을 지킨다.
 
 ## 원칙
 
-- 측정 조건은 gpt-6.1-sol, 추론 강도 medium입니다.
+- 측정 조건은 gpt-6.1-sol, 추론 강도 medium입니다. 시작 순서·자료 점검 표·끝내기 전 표는 gpt-6.1-terra medium 4회와 Claude Code 1회로 같은 재주문 과제를 돌려 확인했습니다.
 - 화면 확인과 손 계산 표본 대조는 사람이 합니다.
 
 ## 출처
@@ -108,6 +124,7 @@ Codex는 다음을 지킨다.
 
 - `judgment`: FOD-team-org/fod-harness
 - `how`·`bro`·`bug-fix`: pstack(MIT, Copyright (c) 2026 Lauren Tan, https://github.com/cursor/plugins/tree/main/pstack). 이식 목록과 라이선스 전문은 `NOTICE.md`에 있습니다.
-- `problem-definition`·`default-stack`: 직접 작성했습니다.
+- `problem-definition`·`default-stack`·`environment-check`·`system-integration`·`deploy-readiness`와 개발 공통 스킬 5개: 직접 작성했습니다.
+- `design-direction`: 공개 디자인 스킬과 디자인 시스템 문서를 참고해 새로 쓴 것입니다. 참고 목록과 라이선스는 `NOTICE.md`에 있습니다.
 - `design-doc`: 직접 작성했습니다. 범위를 문서로 먼저 고정하는 방식은 fod-harness의 spec-writing을 따랐습니다.
 - `security-check`·`data-exposure-guard`·`llm-feature-guard`·`http-roundtrip-test`·`data-edge-tests`·`mutation-check`·`ui-baseline`: 공개 보안·테스트·화면 자료를 참고해 새로 쓴 것입니다. 참고 목록은 `NOTICE.md`에 있습니다.
