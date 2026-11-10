@@ -98,6 +98,43 @@ echo "skills installed: $(for d in "$PB"/skills/*/; do [ -f "$SK/$(basename "$d"
 git clone --depth 1 https://github.com/FOD-team-org/codex-task-playbook.git /tmp/playbook 을 실행하고, /tmp/playbook/README.md의 "설치"대로 설치해.
 ```
 
+## 업데이트
+
+이미 설치한 컴퓨터에서 새 버전을 받을 때 씁니다. 위 설치 스크립트는 이미 있는 스킬과 AGENTS.md를 건너뛰므로, 다시 돌려도 새 버전으로 바뀌지 않습니다. 과제 폴더 루트에서 아래를 실행합니다. 이 저장소에 있는 이름의 스킬만 덮어쓰고, 다른 스킬과 AGENTS.md의 기존 내용은 그대로 둡니다. 끝나면 Codex를 다시 켭니다.
+
+```bash
+set -e
+PB=/tmp/playbook
+if [ -d "$PB/.git" ]; then git -C "$PB" pull -q; else git clone -q --depth 1 https://github.com/FOD-team-org/codex-task-playbook.git "$PB"; fi
+SK="${CODEX_HOME:-$HOME/.codex}/skills"
+if [ ! -d "$SK" ] || [ ! -w "$SK" ]; then SK="$PWD/.agents/skills"; mkdir -p "$SK"; fi
+for d in "$PB"/skills/*/; do
+  n=$(basename "$d")
+  rm -rf "$SK/$n"
+  cp -r "$d" "$SK/$n"
+done
+if [ ! -f AGENTS.md ] || [ "$(head -n 1 AGENTS.md)" = "$(head -n 1 "$PB/AGENTS.md")" ]; then
+  cp "$PB/AGENTS.md" AGENTS.md; echo "AGENTS.md: replaced"
+else
+  if grep -q '^<!-- codex-task-playbook -->$' AGENTS.md; then
+    sed '/^<!-- codex-task-playbook -->$/,$d' AGENTS.md > AGENTS.md.tmp && mv AGENTS.md.tmp AGENTS.md
+  fi
+  printf '\n<!-- codex-task-playbook -->\n' >> AGENTS.md
+  cat "$PB/AGENTS.md" >> AGENTS.md; echo "AGENTS.md: playbook part replaced"
+fi
+if [ -f ASSUMPTIONS.md ] && [ "$(grep -c '^- ' ASSUMPTIONS.md)" -le 1 ]; then cp "$PB/templates/ASSUMPTIONS.md" .; echo "ASSUMPTIONS.md: template replaced"; fi
+echo "skills dir: $SK"
+echo "version: $(git -C "$PB" log -1 --format='%h %s')"
+```
+
+### Codex에게 업데이트를 맡길 때
+
+```
+git -C /tmp/playbook pull 을 실행하고(폴더가 없으면 git clone --depth 1 https://github.com/FOD-team-org/codex-task-playbook.git /tmp/playbook), /tmp/playbook/README.md의 "업데이트"대로 실행해.
+```
+
+스킬 폴더에 쓰는 일이 승인 요청으로도 막히면 위 스크립트를 터미널에서 직접 실행합니다. 업데이트한 세션에는 예전 규칙이 이미 읽혀 있으므로, 과제는 Codex를 다시 켠 새 세션에서 시작합니다.
+
 Codex는 다음을 지킨다.
 
 1. 명령이 샌드박스·승인·네트워크 때문에 막히면 설정을 바꾸거나 우회하지 않는다. 멈추고, 사람이 터미널에 직접 붙여 넣을 수 있게 스크립트를 그대로 보여 준다.
